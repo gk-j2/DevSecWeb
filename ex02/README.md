@@ -29,7 +29,9 @@ docker exec -it postgres-lr /bin/bash
 psql -U postgres -d lib
 ```
 
-<center>![Picture 3.1](https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/3.1.png)</center>
+<center>
+ ![Picture 3.1](https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/3.1.png)
+</center>
 
 <center>![Picture 3.2](https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/3.2.png)</center>
 
