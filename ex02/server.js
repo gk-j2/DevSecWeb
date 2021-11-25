@@ -32,6 +32,7 @@ app.get('/books', async (req, res) => {
                   left join author a on a.id = ba.aid
                   left join book b on b.id = ba.bid`;
     if(bookname){
+	    // sql+=`\rwhere b.name like '%$1%'`; // with sqli
         sql+={
             text: `\rwhere b.name like '%$1%'`,
             values: [bookname]
