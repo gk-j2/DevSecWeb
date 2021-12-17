@@ -3,6 +3,7 @@ const app = express();
 const port = 8080;
 const { Client } = require('pg');
 const cookieParser = require('cookie-parser');
+const CryptoJS = require("crypto-js");
 
 
 app.use(express.static('static'));
@@ -14,9 +15,9 @@ app.use(express.urlencoded({
 
 const client = new Client({ //Вставьте свои параметры БД
     user: 'postgres',
-    host: '192.168.121.137', 
+    host: '127.0.0.1', 
     database: 'lib',
-    password: 'P@ssw0rd',
+    password: 'passwddd',
     port: 5432,
 });
 client.connect();
@@ -62,7 +63,7 @@ app.post('/signin', async (req, res) => {
     let pass = req.body.pass;
     //let sql = "SELECT name as result FROM users WHERE name = '" + login + "' AND pass = md5('" + pass + "')";
     let sql = {
-        text: "SELECT name as result FROM users WHERE name = $1 AND pass = md5($2)", 
+        text: "SELECT name as result FROM users WHERE name = $1 AND pass = $2", 
         values: [login, pass]
     };
     try{
@@ -70,7 +71,9 @@ app.post('/signin', async (req, res) => {
         let userId = data.rows[0].result;
         if(data.rows.length>0 && userId){
             const oneDayToSeconds = 24 * 60 * 60;
-            res.cookie('userId', userId,{maxAge: oneDayToSeconds});
+            let salt = Math.floor(CryptoJS.random * 1000);
+            let cookie_val = CryptoJS.MD5(salt + userId)
+            res.cookie('userId', cookie_val, {maxAge: oneDayToSeconds, httpOnly: true});
             res.redirect('/books');
         }else
         {
@@ -88,7 +91,7 @@ app.post('/signin', async (req, res) => {
 app.post('/addbook', async (req, res) => {
     console.log("adding new book");
     let aid = req.body.author;
-    let bname = req.body.bookname;
+    let bname = req.body.bookname.replace('<', '|').replace('>', '|');
     let bid = Math.floor(Math.random() * 1000);
 
     let booksql = {
